@@ -6,10 +6,12 @@ import { submitRequest } from "./api/api";
 import "./assets/css/app.css"
 
 function App() {
+
     //state declearation
+
   const [leftValue, setLeftValue] = useState("");
   const [rightValue, setRightValue] = useState("");
-    //
+    
 
   // check weather the request is empty or not 
 
@@ -24,22 +26,24 @@ function App() {
 //   }
 
   // api call function for left input field
+
     const handleLeftSubmit = async ()=>{
 
         // handleCheckValue(leftValue)
         const rightValue = await submitRequest(leftValue,'left');
         // console.log(rightValue)
         // console.log(rightValue.data.newValue)
-        setRightValue(rightValue.data.newValue)
-
+        setRightValue(parseFloat(rightValue.data.newValue))
     }
+
     // api call function for right input field
+
     const handleRightSubmit =  async ()=>{
 
         // handleCheckValue(rightValue)
         const leftValue = await submitRequest(rightValue,'right');
         // console.log(leftValue.data.newValue)
-        setLeftValue(leftValue.data.newValue)
+        setLeftValue(parseFloat(leftValue.data.newValue))
     }
 
   

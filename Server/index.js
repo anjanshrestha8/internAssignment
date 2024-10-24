@@ -10,11 +10,13 @@ app.use(express.json());
 
 
 app.get("/",(request,response)=>{
-    response.send("API is working...")
+    response.json({
+        message:"Welcome to my server"
+    })
 })
 
-app.post('/submit', (req, res) => {
-    const { value, source } = req.body;
+app.post('/submit', (request, response) => {
+    const { value, source } = request.body;
 
     let newValue = 0;
     if (source === 'left') {
@@ -23,7 +25,7 @@ app.post('/submit', (req, res) => {
         newValue = value / 2; 
     }
 
-    res.json({ newValue });
+    response.json({ newValue });
 });
 
 app.listen(PORT, () => {
