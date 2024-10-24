@@ -4,6 +4,7 @@ function LeftInput({ value, onChange, onSubmit}) {
   return (
     <>
       <Input
+      title="Left Side: -"
         value={value}
         onChange={onChange}
         onSubmit={onSubmit}
