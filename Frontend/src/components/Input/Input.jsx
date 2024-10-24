@@ -8,7 +8,7 @@ function Input({ value, onChange, onSubmit,title}) {
         <h3 className='input-container-h3'>{title}</h3>
         <br />
         <input
-          type="number"
+          type="text"
           value={value}
           onChange={onChange}
           className='input-container-input'
