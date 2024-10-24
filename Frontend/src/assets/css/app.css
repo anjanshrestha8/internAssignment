@@ -1,0 +1,17 @@
+@import "./resset.css";
+.main-wrapper{
+ background-color: rgb(89, 120, 124);
+ display: grid;
+ align-items: center;
+ justify-content: center;
+ height: 50rem;
+}
+
+.component-wrapper{
+    background-color:white;
+    padding: 3rem 2.3rem;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 2rem;
+}

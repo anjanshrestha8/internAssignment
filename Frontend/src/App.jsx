@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import LeftInput from "./pages/LeftSide/LeftInput";
+import RightInput from "./pages/RightSide/RightInput";
+import { submitRequest } from "./api/api";
+
+import "./assets/css/app.css"
 
 function App() {
-  const [count, setCount] = useState(0)
+    //state declearation
+  const [leftValue, setLeftValue] = useState("");
+  const [rightValue, setRightValue] = useState("");
+    //
 
+  // check weather the request is empty or not 
+
+//   const handleCheckValue = (checkValue)=>{
+//     if(checkValue === ""){
+//         console.log("request is invalid")
+//         return false;
+//     }
+//     else{
+//         console.log("request is valid")
+//     }
+//   }
+
+  // api call function for left input field
+    const handleLeftSubmit = async ()=>{
+
+        // handleCheckValue(leftValue)
+        const rightValue = await submitRequest(leftValue,'left');
+        // console.log(rightValue)
+        // console.log(rightValue.data.newValue)
+        setRightValue(rightValue.data.newValue)
+
+    }
+    // api call function for right input field
+    const handleRightSubmit =  async ()=>{
+
+        // handleCheckValue(rightValue)
+        const leftValue = await submitRequest(rightValue,'right');
+        // console.log(leftValue.data.newValue)
+        setLeftValue(leftValue.data.newValue)
+    }
+
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="main-wrapper">
+            <div className="component-wrapper">
+            <LeftInput
+                value={leftValue}
+                onChange={(e) => setLeftValue(e.target.value)}
+                onSubmit={handleLeftSubmit}
+            />
+            <RightInput
+                value={rightValue}
+                onChange={(e) => setRightValue(e.target.value)}
+                onSubmit={handleRightSubmit}
+            />
+            </div>
+        </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

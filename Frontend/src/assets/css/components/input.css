@@ -1,0 +1,13 @@
+.input-container{
+    background-color: rebeccapurple;
+    padding: 1rem 0.5rem;
+
+}
+.input-container-input{
+    height: 2rem;
+    font-size: 1.5rem;
+}
+.input-container-button{
+    padding: 0.5rem;
+
+}
